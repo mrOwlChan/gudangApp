@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\UserController;
 use App\Http\Controllers\SigninController;
 use App\Http\Controllers\SignupController;
 use App\Http\Controllers\DashboardController;
@@ -47,3 +48,8 @@ Route::get('/warehouse/{warehouse}/edit', [WarehouseController::class, 'edit']);
 Route::patch('/warehouse/{warehouse}', [WarehouseController::class, 'update']);
 Route::delete('/warehouse/{warehouse}', [WarehouseController::class, 'destroy']);
 
+// User
+Route::get('/user', [UserController::class, 'index'])->middleware('auth');
+Route::get('/user/{id}/edit', [UserController::class, 'edit'])->middleware('auth');
+Route::patch('/user/{id}', [UserController::class, 'update']);
+Route::delete('/user/{id}', [UserController::class, 'destroy']);
